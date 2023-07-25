@@ -1,39 +1,30 @@
-const express = require("express");
-const logger = require("./middleware/logger");
-const users = require("./data/index");
+const express = require('express');
+const logger = require('./middleware/logger');
+const { urlencoded } = require('body-parser');
 
-//init express 
+//init express
 const app = express();
 
-PORT = process.env.PORT || 5000 
-//Create Middlewares
-
-// use 
-app.use(logger)
+//process.env.PORT ||
+const PORT = 5000;
 
 
-//Create routes 
+// use
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(logger);
+app.use('/users/userdata', require('./routes/api/users'));
+//body parser middleware
+
 
 // getHome
-app.get("/", (req, res) => {res.send("<i>hello dudu, !</i>");});
 
-/*
-*get users data
-**/
-// get all users data
-app.get("/data/userdata", (req, res) => res.json(users));
-//get one user data 
-app.get("/data/userdata/:id", (req, res) => {
-    const found = users.some(user => user.id === parseInt(req.params.id))
-    if(!found){
-        res.json({msg : `No User found with id ${req.params.id}`})
-    }
-    else {res.json(users.filter(user => user.id === parseInt(req.params.id)))}
-    
-})
+app.get('/', (req, res) => {
+    res.send('<i>hello dudu, !</i>');
+});
 
-
-
-
-//listen on port 
-app.listen(PORT, () => {console.log(`Server started on port : ${PORT}`)}); 
+//listen on port
+app.listen(PORT, () => {
+    console.log(`Server started on port : ${PORT}`);
+});

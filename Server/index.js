@@ -8,7 +8,6 @@ const app = express();
 //process.env.PORT ||
 const PORT = 5000;
 
-
 // use
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -16,7 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(logger);
 app.use('/users/userdata', require('./routes/api/users'));
 //body parser middleware
-
 
 // getHome
 

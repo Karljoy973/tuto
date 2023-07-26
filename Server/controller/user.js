@@ -1,15 +1,15 @@
-const users = require('@data/');
+const users = require('@data/index');
 
-function Get(req, res) {
+const get = (req, res) => {
     const found = users.some((user) => user.id === parseInt(req.params.id));
     if (!found) {
         res.status(400).json(`No User found with id ${req.params.id}`);
     } else {
         res.json(users.filter((user) => user.id === parseInt(req.params.id)));
     }
-}
+};
 
-const Post = (req, res) => {
+const post = (req, res) => {
     const newUser = {
         id: users.length + 1,
         name: req.body.name,
@@ -27,7 +27,7 @@ const Post = (req, res) => {
     }
 };
 
-const Put = (req, res) => {
+const put = (req, res) => {
     const user = req.body;
     users.forEach((u) => {
         if (u.id === parseInt(req.params.id)) {
@@ -49,7 +49,7 @@ const Put = (req, res) => {
 };
 
 module.exports = {
-    Get,
-    Post,
-    Put,
+    get,
+    post,
+    put,
 };

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "baseUrl": ["./"],
+      "@Client/*": ["./Client/*"],
+      "@Server/*": ["./Server/*"],
+      "@api/*": ["./Server/routes/api/*"],
+      "@controller/*": ["./Server/controller/*"],
+      "@data/*": ["./Server/data/*"],
+      "@middle/*": ["./Server/middleware/*"],
+    }
+  }
+}

@@ -1,7 +1,7 @@
 const express = require('express');
 const users_api = express.Router();
-const users_controller = require('../../controller/users');
+const controller = require('@controller/index');
 
-users_api.get('/', users_controller.get);
+users_api.get('/', controller.users.get);
 
 module.exports = users_api;

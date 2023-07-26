@@ -1,13 +1,13 @@
-const users = require('../data/index');
+const users = require('@data/');
 
-const Get = (req, res) => {
+function Get(req, res) {
     const found = users.some((user) => user.id === parseInt(req.params.id));
     if (!found) {
         res.status(400).json(`No User found with id ${req.params.id}`);
     } else {
         res.json(users.filter((user) => user.id === parseInt(req.params.id)));
     }
-};
+}
 
 const Post = (req, res) => {
     const newUser = {

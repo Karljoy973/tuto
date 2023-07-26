@@ -10,6 +10,7 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-        "prettier/prettier": "error"
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
+        "no-irregular-whitespace": ["error", { "skipStrings": true }]
     }
 }

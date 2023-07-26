@@ -1,13 +1,12 @@
-const uuid = require('uuid');
 const users = [
     {
-        id: uuid.v4(),
+        id: 1,
         uname: 'toto',
         pdw: 'pdw',
         email: 'toto@toto.com',
     },
     {
-        id: uuid.v4(),
+        id: 2,
         uname: 'tata',
         pdw: 'pdw',
         email: 'tata@tata.com',

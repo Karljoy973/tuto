@@ -1,6 +1,6 @@
-const home = require('@controller/home');
-const user = require('@controller/user');
-const users = require('@controller/users');
+const home = require('./home');
+const user = require('./user');
+const users = require('./users');
 
 const controller = {
     home,

@@ -1,10 +1,10 @@
 const express = require('express');
-const logger = require('@middle/logger');
+const logger = require('./middleware/logger');
 // eslint-disable-next-line no-unused-vars
 const { urlencoded } = require('body-parser');
 
 // call api routes
-const api = require('@api/index');
+const api = require('./routes/api/index');
 //init express
 const app = express();
 

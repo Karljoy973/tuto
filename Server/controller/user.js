@@ -1,6 +1,6 @@
-const users = require('@data/index');
+const users = require('../data/index');
 
-const get = (req, res) => {
+const GET = (req, res) => {
     const found = users.some((user) => user.id === parseInt(req.params.id));
     if (!found) {
         res.status(400).json(`No User found with id ${req.params.id}`);
@@ -9,15 +9,14 @@ const get = (req, res) => {
     }
 };
 
-const post = (req, res) => {
+const POST = (req, res) => {
     const newUser = {
         id: users.length + 1,
-        name: req.body.name,
+        uname: req.body.uname,
         pwd: req.body.pwd,
         email: req.body.email,
-        status: 'active',
     };
-    if (!newUser.name || !newUser.pwd || !newUser.email) {
+    if (!newUser.uname || !newUser.pwd || !newUser.email) {
         res.status(400).json({
             msg: 'Please include a name, a password and an email',
         });
@@ -27,11 +26,11 @@ const post = (req, res) => {
     }
 };
 
-const put = (req, res) => {
+const PUT = (req, res) => {
     const user = req.body;
     users.forEach((u) => {
         if (u.id === parseInt(req.params.id)) {
-            u.uname = user.name ? user.name : u.uname;
+            u.uname = user.uname ? user.uname : u.uname;
             u.pwd = user.pwd ? user.pwd : u.pwd;
             u.email = user.email ? user.email : u.email;
             res.json({
@@ -42,14 +41,22 @@ const put = (req, res) => {
                 password : ${user.pwd} \n
                 has been updated succesfully.
                 `,
-                user,
+                users,
             });
         }
     });
 };
+const DELETE = (req, res) => {
+    const update = users.filter((user) => user.id !== parseInt(req.params.id));
+    res.json({
+        msg: 'member deleted',
+        update,
+    });
+};
 
 module.exports = {
-    get,
-    post,
-    put,
+    GET,
+    POST,
+    PUT,
+    DELETE,
 };

@@ -1,6 +1,6 @@
-const user_api = require('@api/user');
-const users_api = require('@api/users');
-const home_api = require('@api/home');
+const user_api = require('./user');
+const users_api = require('./users');
+const home_api = require('./home');
 
 const api = {
     user_api,

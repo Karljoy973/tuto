@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "module-resolver": "^1.0.0"
+  }
+}
